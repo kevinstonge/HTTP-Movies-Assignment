@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
-const UpdateMovie = (props) => {
+
+const AddMovie = (props) => {
   const { push } = useHistory();
-  const { id } = useParams();
   const [movie, setMovie] = useState({
     title: "",
     director: "",
     metascore: "",
     stars: [],
   });
-  useEffect(() => {
-    axios
-      .get(`http://localhost:5000/api/movies/${id}`)
-      .then((r) => setMovie(r.data));
-  }, [id]);
   const handleChange = (e) => {
     const value =
       e.target.name === "stars" ? e.target.value.split(",") : e.target.value;
@@ -22,15 +17,12 @@ const UpdateMovie = (props) => {
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    axios
-      .put(`http://localhost:5000/api/movies/${id}`, movie)
-      .then((r) => {
-        props.setMovieList(
-          props.movieList.map((m) => (m.id === movie.id ? movie : m))
-        );
+    axios.post(`http://localhost:5000/api/movies`, movie).then((r) => {
+      if (r.status === 201) {
+        props.setMovieList(r.data);
         push("/");
-      })
-      .catch((e) => console.log(e));
+      }
+    });
   };
   return (
     <form className="update-movie" onSubmit={onSubmit}>
@@ -53,4 +45,4 @@ const UpdateMovie = (props) => {
     </form>
   );
 };
-export default UpdateMovie;
+export default AddMovie;
