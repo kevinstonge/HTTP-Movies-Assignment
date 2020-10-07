@@ -22,8 +22,9 @@
     padding: 0.5rem;
     .saved-list-container {
       @include flexR();
+      display: inline-flex;
       justify-content: flex-start;
-      gap: 0.5rem;
+      gap: 1rem;
       flex-grow: 1;
       padding: 0.5rem;
       flex-wrap: wrap;
@@ -32,6 +33,7 @@
         color: $b1;
         background-color: $f2;
         padding: 0.25rem;
+        line-height: 1.5rem;
       }
     }
   }
@@ -79,5 +81,13 @@
         color: red;
       }
     }
+  }
+  .update-movie {
+    @include flexC();
+    width: 70%;
+    max-width: 40rem;
+    padding: 0.5rem;
+    gap: 0.5rem;
+    background-color: $b2;
   }
 }
