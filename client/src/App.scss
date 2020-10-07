@@ -1,0 +1,83 @@
+@import "./base.scss";
+#root {
+  @include flexC();
+  gap: 0.5rem;
+  width: 100vw;
+  height: 100vh;
+  padding: 1rem;
+  overflow-y: auto;
+  background-color: $b1;
+  color: $f1;
+  a {
+    text-decoration: none;
+    color: unset;
+  }
+  .saved-list {
+    border: 1px solid black;
+    background-color: $b2;
+    width: 70%;
+    max-width: 40rem;
+    @include flexR();
+    gap: 1rem;
+    padding: 0.5rem;
+    .saved-list-container {
+      @include flexR();
+      justify-content: flex-start;
+      gap: 0.5rem;
+      flex-grow: 1;
+      padding: 0.5rem;
+      flex-wrap: wrap;
+      overflow-y: auto;
+      .saved-movie {
+        color: $b1;
+        background-color: $f2;
+        padding: 0.25rem;
+      }
+    }
+  }
+  .movie-list {
+    @include flexC();
+    justify-items: stretch;
+    gap: 0.5rem;
+    align-items: flex-start;
+    background-color: $b2;
+    width: 70%;
+    max-width: 40rem;
+    padding: 0.5rem;
+    overflow-y: auto;
+    .movie-card {
+      h2 {
+        font-size: 1.2rem;
+        font-weight: bolder;
+        color: $e1;
+      }
+      width: 100%;
+      background-color: $b3;
+      padding: 0.5rem;
+      &:hover {
+        background-color: $b1;
+        color: $e2;
+      }
+      .actor-list {
+        margin-left: 0.5rem;
+      }
+    }
+  }
+  .save-wrapper {
+    @include flexR();
+    width: 70%;
+    max-width: 40rem;
+    padding: 0.5rem;
+    background-color: $b2;
+    justify-content: space-between;
+    .buttons {
+      @include flexC();
+      height: 100%;
+      align-items: stretch;
+      gap: 0.5rem;
+      a {
+        color: red;
+      }
+    }
+  }
+}
